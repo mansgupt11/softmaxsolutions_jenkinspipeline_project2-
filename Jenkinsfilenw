@@ -1,1 +1,29 @@
 
+pipeline {
+	agent none
+	tools {
+    	maven 'my_mvn'
+	}
+	stages {
+    	stage("Checkout") {   
+ 
+        	steps {               	 
+            	git url: 'https://github.com/mansgupt11/softmaxsolutions_jenkinspipeline_project2-.git'          	 
+           	 
+        	}    
+    	}
+    	stage('Build') {
+        	steps {
+        	sh "mvn compile"  	 
+        	}
+    	}
+   	 
+    	stage("Unit test") {          	 
+        	steps {  	 
+            	git url: 'https://github.com/mansgupt11/softmaxsolutions_jenkinspipeline_project2-.git'
+            	sh "mvn test"          	 
+       	}     	 
+    	}	 
+   }
+
+}
